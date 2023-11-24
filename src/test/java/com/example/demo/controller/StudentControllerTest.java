@@ -41,9 +41,9 @@ public class StudentControllerTest {
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/students"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("John")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name", Matchers.is("Doe")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.aMapWithSize(2)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.studentList[0].name", Matchers.is("John")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.studentList[1].name", Matchers.is("Doe")));
     }
 
     // Otras pruebas para el controlador
